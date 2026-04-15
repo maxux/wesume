@@ -1,0 +1,156 @@
+img.profile {
+    width: 7rem;
+    margin: 1rem;
+    outline: solid 0.75rem rgba(var(--bs-secondary-rgb), 0.4);
+}
+
+.card {
+    border: none;
+}
+
+.card-body h5, .card-body h6 {
+    margin: 0;
+    padding: 0;
+}
+
+.card-body h5 {
+    font-weight: bold;
+}
+
+.card-contact {
+    border-left: solid 1px var(--bs-secondary);
+}
+
+.card-present {
+    border-right: solid 1px var(--bs-secondary);
+}
+
+@media (max-width: 768px) {
+    .card-contact {
+        border-top: solid 1px rgba(var(--bs-secondary-rgb), 0.4);
+        border-left: none;
+    }
+
+    .card-present {
+        border-bottom: solid 1px rgba(var(--bs-secondary-rgb), 1);
+        border-right: none;
+    }
+}
+
+.command-block {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.1rem;
+
+    color: var(--bs-gray-500);
+    background: rgba(var(--bs-black-rgb), 0.4);
+
+    border-top: solid 1px rgba(var(--bs-secondary-rgb), 0.7);
+    border-bottom: solid 1px rgba(var(--bs-secondary-rgb), 0.4);
+}
+
+.command-block h4::before {
+    content: "$ ";
+    font-weight: bold;
+    color: var(--bs-teal);
+}
+
+.command-block .container h4 span {
+    font-weight: bold;
+    color: var(--bs-light);
+}
+
+/* Work Layout */
+.work-date {
+    text-align: right;
+    border-right: solid 1px var(--bs-gray-800);
+}
+
+.work-date span {
+    font-size: 1em;
+}
+
+.work-details h5 {
+    font-size: 1.35rem;
+    font-weight: bold;
+    color: var(--bs-orange);
+    line-height: 1;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.work-details h6 {
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 1.20rem;
+}
+
+@media (max-width: 992px) {
+    .work-date {
+        text-align: left;
+        border-right: none;
+    }
+
+    .work-details h5 {
+        margin-top: 0.55rem;
+    }
+}
+
+/* Project Layout */
+.project-link {
+    text-align: right;
+    border-right: solid 1px var(--bs-gray-800);
+}
+
+.project-link span {
+    font-size: 1em;
+}
+
+.project-details {
+    margin-bottom: 1.4rem;
+}
+
+.project-details h5 {
+    color: var(--bs-light);
+    font-weight: bold;
+}
+
+@media (max-width: 992px) {
+    .project-link {
+        text-align: left;
+        border-right: none;
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+/* Effects */
+.container-header {
+    padding-top: 2em;
+    padding-bottom: 1.2em;
+    background-color: rgba(var(--bs-success-rgb), 0.4);
+}
+
+.container-footer {
+    background: var(--bs-black);
+}
+
+ul li {
+    margin-bottom: 1rem;
+}
+
+a.badge {
+    text-decoration: none;
+}
+
+.blink {
+    animation: blinker 0.6s ease-in-out infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
+}
