@@ -6,6 +6,7 @@ img.profile {
 
 .card {
     border: none;
+    background: transparent;
 }
 
 .card-body h5, .card-body h6 {
@@ -153,4 +154,28 @@ a.badge {
 
 @keyframes blinker {
     50% { opacity: 0; }
+}
+
+div.man-page {
+    margin: 0;
+    padding-top: 1rem;
+    padding-bottom: 0;
+}
+
+.man-page h5 {
+    text-transform: uppercase;
+    color: var(--bs-teal);
+}
+
+.man-page ul {
+    list-style-position: outside;
+    list-style-type: "- ";
+}
+
+.man-page ul li {
+    margin: 0;
+}
+
+.man-page code {
+    font-weight: bold;
 }
