@@ -179,3 +179,23 @@ div.man-page {
 .man-page code {
     font-weight: bold;
 }
+
+/* WebGL Canvas */
+.backgl {
+    position: relative;
+    padding: 0 0 3rem 0;
+    margin: 0;
+}
+
+.backgl + .command-block {
+    margin-top: 0;
+}
+
+#glcanvas {
+    position: absolute;
+    left: -7px;
+    top: 0;
+    z-index: -1;
+    width: calc(100vw + 7px);
+    height: 100%;
+}

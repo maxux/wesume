@@ -26,62 +26,67 @@
   </header>
 
   <main>
-    <div class="command-block mt-0">
+    <!-- Special container to limit WebGL background -->
+    <div class="container-fluid backgl">
+      <canvas id="glcanvas"></canvas>
+
+      <div class="command-block mt-0">
+        <div class="container">
+          <h4><span>lslogins</span> maxux</h4>
+        </div>
+      </div>
+
       <div class="container">
-        <h4><span>lslogins</span> maxux</h4>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row g-2">
-      <div class="col-12 col-md-12 col-lg-2 d-flex justify-content-center align-items-center">
-        <img src="static/profile-resume.jpg" class="rounded-circle profile">
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-5">
-        <div class="card h-100 card-present">
-          <div class="card-body d-flex justify-content-center align-items-center flex-column gap-2">
-            <h5>Software Developer</h5>
-            <h6 class="text-blue-300">Liège, Belgium</h6>
-            <h6 class="text-secondary">21 January 1992</h6>
-
-            <p class="fs-3 m-0 p-0">
-              <a href="https://github.com/maxux" target="_blank" class="link-light link-opacity-75 link-opacity-100-hover">
-                <i class="fa-brands fa-github"></i></a>
-
-              <a href="https://www.linkedin.com/in/maxux/" target="_blank" class="link-light link-opacity-75 link-opacity-100-hover">
-                <i class="fa-brands fa-linkedin"></i></a>
-
-              <a href="https://www.instagram.com/maxux42" target="_blank" class="link-light link-opacity-75 link-opacity-100-hover">
-                <i class="fa-brands fa-instagram"></i></a>
-            </p>
+        <div class="row g-2">
+          <div class="col-12 col-md-12 col-lg-2 d-flex justify-content-center align-items-center">
+            <img src="static/profile-resume.jpg" class="rounded-circle profile">
           </div>
-        </div>
-      </div>
 
-      <div class="col-12 col-md-6 col-lg-5">
-        <div class="card h-100 card-contact">
-          <div class="card-body d-flex justify-content-center align-items-center flex-column">
-            <div>
-              <span class="badge text-bg-success rounded-pill fs-6 my-3">Open for Contracts (freelance)</span>
-            </div>
-            <div>
-              <strong>E-Mail:</strong>
-              root@maxux.net
-            </div>
-            <div>
-              <strong>Phone:</strong>
-              (+32) 0494/44.34.66
-            </div>
-            <div>
-              <strong>Driving licenses:</strong>
-              Cat. B, Cat. D
+          <div class="col-12 col-md-6 col-lg-5">
+            <div class="card h-100 card-present">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column gap-2">
+                <h5>Software Developer</h5>
+                <h6 class="text-blue-300">Liège, Belgium</h6>
+                <h6 class="text-secondary">21 January 1992</h6>
+
+                <p class="fs-3 m-0 p-0">
+                  <a href="https://github.com/maxux" target="_blank" class="link-light link-opacity-75 link-opacity-100-hover">
+                    <i class="fa-brands fa-github"></i></a>
+
+                  <a href="https://www.linkedin.com/in/maxux/" target="_blank" class="link-light link-opacity-75 link-opacity-100-hover">
+                    <i class="fa-brands fa-linkedin"></i></a>
+
+                  <a href="https://www.instagram.com/maxux42" target="_blank" class="link-light link-opacity-75 link-opacity-100-hover">
+                    <i class="fa-brands fa-instagram"></i></a>
+                </p>
+              </div>
             </div>
           </div>
+
+          <div class="col-12 col-md-6 col-lg-5">
+            <div class="card h-100 card-contact">
+              <div class="card-body d-flex justify-content-center align-items-center flex-column">
+                <div>
+                  <span class="badge text-bg-success rounded-pill fs-6 my-3">Open for Contracts (freelance)</span>
+                </div>
+                <div>
+                  <strong>E-Mail:</strong>
+                  root@maxux.net
+                </div>
+                <div>
+                  <strong>Phone:</strong>
+                  (+32) 0494/44.34.66
+                </div>
+                <div>
+                  <strong>Driving licenses:</strong>
+                  Cat. B, Cat. D
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-    </div>
     </div>
 
     <div class="command-block">
@@ -713,12 +718,42 @@
             </div>
             <div class="fw-bold">
               <span class="text-orange">Bootstrap v5.3.8 with Customized SCSS</span>
-              <span class="text-red">Code fully written myself with nvim v0.12.0</span>
+              <span class="text-red">
+                Code fully written myself (including WebGL background on lslogins section),
+                on nvim.
+              </span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+  <script id="vertex-shader-2d" type="notjs">
+  attribute vec4 a_position;
+  attribute vec4 a_color;
+  uniform vec2 u_resolution;
+
+  varying vec4 v_color;
+
+  void main() {
+    vec2 zeroToOne = a_position.xy / u_resolution;
+    vec2 zeroToTwo = zeroToOne * 2.0;
+    vec2 clipSpace = zeroToTwo - 1.0;
+
+    gl_Position = vec4(clipSpace * vec2(1, -1), 0, 1);
+    v_color = a_color;
+  }
+  </script>
+  <script id="fragment-shader-2d" type="notjs">
+  precision mediump float;
+  varying vec4 v_color;
+
+  void main() {
+      gl_FragColor = v_color;
+  }
+  </script>
+  <script src="static/webgl-utils.js"></script>
+  <script src="static/webgl-backboxes.js" type="module"></script>
 </body>
 </html>
