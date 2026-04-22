@@ -199,3 +199,44 @@ div.man-page {
     width: calc(100vw + 7px);
     height: 100%;
 }
+
+.visit-online {
+    display: none;
+}
+
+@media print {
+    @page {
+        size: portrait;
+        padding: 1cm 0 0 0;
+    }
+
+    canvas {
+        display: none !important;
+    }
+
+    .visit-online {
+        display: block;
+        margin-top: 4cm;
+    }
+
+    .visit-online p {
+        margin: 0.5rem;
+    }
+
+    .project-link {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .row {
+        break-inside: avoid;
+    }
+
+    .print-page-break {
+        break-after: page;
+    }
+
+    .container-footer {
+        background: transparent;
+    }
+}
